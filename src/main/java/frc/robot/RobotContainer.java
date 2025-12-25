@@ -7,9 +7,10 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.ElevatorExpoSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.FlywheelSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 import static edu.wpi.first.units.Units.Degrees;
 import static edu.wpi.first.units.Units.Meters;
@@ -30,7 +31,8 @@ public class RobotContainer {
   private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ElevatorSubsystem m_elevatorSubsystem = new ElevatorSubsystem();
-  private final FlywheelSubsystem m_flywheelSubsystem = new FlywheelSubsystem();
+  private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
+  private final ElevatorExpoSubsystem m_elevatorExpoSubsystem = new ElevatorExpoSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
@@ -46,7 +48,7 @@ public class RobotContainer {
     // Set the default command to force the elevator to go to 0.
     m_elevatorSubsystem.setDefaultCommand(m_elevatorSubsystem.setHeight(Meters.of(0)));
 
-    m_flywheelSubsystem.setDefaultCommand(m_flywheelSubsystem.set(0));
+    m_shooterSubsystem.setDefaultCommand(m_shooterSubsystem.set(0));
   }
 
   /**
@@ -80,15 +82,25 @@ public class RobotContainer {
     m_driverController.x().whileTrue(m_elevatorSubsystem.set(0.3));
     m_driverController.y().whileTrue(m_elevatorSubsystem.set(-0.3));
 
-    /***********Flywheel Subsystem***********/
-     // Schedule `setVelocity` when the Xbox controller's B button is pressed,
+    /***********Elevator Expo Subsystem***********/
+    // Schedule `setHeight` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.a().whileTrue(m_flywheelSubsystem.setVelocity(RPM.of(60)));
-    m_driverController.b().whileTrue(m_flywheelSubsystem.setVelocity(RPM.of(300)));
+    m_driverController.a().whileTrue(m_elevatorExpoSubsystem.setHeight(Meters.of(0.5)));
+    m_driverController.b().whileTrue(m_elevatorExpoSubsystem.setHeight(Meters.of(1)));
     // Schedule `set` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.x().whileTrue(m_flywheelSubsystem.set(0.3));
-    m_driverController.y().whileTrue(m_flywheelSubsystem.set(-0.3));
+    m_driverController.x().whileTrue(m_elevatorExpoSubsystem.set(0.3));
+    m_driverController.y().whileTrue(m_elevatorExpoSubsystem.set(-0.3));
+
+    /***********Shooter Subsystem***********/
+     // Schedule `setVelocity` when the Xbox controller's B button is pressed,
+    // cancelling on release.
+    m_driverController.a().whileTrue(m_shooterSubsystem.setVelocity(RPM.of(60)));
+    m_driverController.b().whileTrue(m_shooterSubsystem.setVelocity(RPM.of(300)));
+    // Schedule `set` when the Xbox controller's B button is pressed,
+    // cancelling on release.
+    m_driverController.x().whileTrue(m_shooterSubsystem.set(0.3));
+    m_driverController.y().whileTrue(m_shooterSubsystem.set(-0.3));
   }
 
   /**

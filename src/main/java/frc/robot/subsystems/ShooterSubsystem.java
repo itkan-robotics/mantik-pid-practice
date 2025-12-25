@@ -27,7 +27,7 @@ import yams.motorcontrollers.SmartMotorControllerConfig.MotorMode;
 import yams.motorcontrollers.SmartMotorControllerConfig.TelemetryVerbosity;
 import yams.motorcontrollers.local.SparkWrapper;
 
-public class FlywheelSubsystem extends SubsystemBase {
+public class ShooterSubsystem extends SubsystemBase {
 
   private SmartMotorControllerConfig smcConfig = new SmartMotorControllerConfig(this)
   .withControlMode(ControlMode.CLOSED_LOOP)
@@ -90,8 +90,8 @@ public class FlywheelSubsystem extends SubsystemBase {
    */
   public Command set(double dutyCycle) {return shooter.set(dutyCycle);}
 
-  /** Creates a new FlywheelSubsystem. */
-  public FlywheelSubsystem() {}
+  /** Creates a new Shootersubsystem. */
+  public ShooterSubsystem() {}
 
   /**
    * Example command factory method.
