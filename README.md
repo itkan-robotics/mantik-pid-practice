@@ -1,3 +1,3 @@
 Hello! Welcome to this repository that has all of the files necessary to learn how to tune arms elevators and shooters using YAMS. Although these tutorials use YAMS, the skills that are. Developed in this tutorial, can be used for other motor controllers, and the graphing and the tuning that we do here can be applied more broadly to external vendors and their specific tuning applications, such as Phoenix Tuner and REV Hardware Client. I hope you find these tutorials useful and please let me know or make a pull request if there is something that I've missed.
 
-For learning how to use and set up these tutorials, please watch this video: [link]
+For learning how to use and set up these tutorials, please watch [this video](https://www.youtube.com/watch?v=7ZNNbFWNo_s&list=PLXZmTommNXyXFZJGnoJt82-evVkSwn-f8&index=1) and follow along with the accompanying tutorials to learn how to tune elevators, arms, and more!
